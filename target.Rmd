@@ -1,0 +1,151 @@
+---
+title: 'On homegeneity'
+author: |
+  | Name
+  | Affiliation
+date: '`r format(Sys.time(), "%Y/%m/%d")`'
+output:
+  bookdown::pdf_document2:
+    fig_caption: yes
+    includes:
+      in_header: asset/latex/custom.sty
+    keep_tex: no
+    latex_engine: pdflatex
+    number_sections: yes
+    template: null
+    toc: no
+  bookdown::html_document2: default
+documentclass: scrartcl
+---
+
+# Euler's theorem on homogeneous functions
+
+Let $(x, y) \mapsto f(x, y)$ be a homogeneous function of degree $n$, that is, for 
+any $\lambda > 0$,
+
+\begin{equation}
+  f(\lambda x, \lambda y) = \lambda^n f(x, y). (\#eq:homogeneous)
+\end{equation}
+
+By differentiating the left-hand side of \@ref(eq:homogeneous) with 
+respect to $\lambda$, we obtain
+
+$$
+  \frac{\partial}{\partial \lambda} f(\lambda x, \lambda y) 
+  =
+  \frac{\partial f}{\partial x} \frac{\partial (\lambda x)}{\partial \lambda}
+  + 
+  \frac{\partial f}{\partial y} \frac{\partial (\lambda y)}{\partial \lambda}
+  =
+  x \frac{\partial f}{\partial x} 
+  + 
+  y \frac{\partial f}{\partial y}.
+$$
+
+From the right-hand side of \@ref(eq:homogeneous), 
+
+$$
+  \frac{\partial}{\partial \lambda} \lambda^n f(x, y)
+  =
+  n \lambda^{n-1} f(x, y).
+$$
+
+Since the derivatives of both sides must coincide, we have 
+
+$$
+  x \frac{\partial f}{\partial x} 
+  + 
+  y \frac{\partial f}{\partial y}
+  =
+  n \lambda^{n - 1} f(x, y)
+$$
+
+Let $\lambda = 1$, then
+
+$$
+  x \frac{\partial f}{\partial x} 
+  + 
+  y \frac{\partial f}{\partial y}
+  =
+  n f(x, y).
+$$
+
+We have proved the following theorem.
+
+```{theorem}
+Let $(x, y) \mapsto f(x, y)$ be a homogeneous function of degree $n$.
+It holds that 
+$$
+  x \frac{\partial f}{\partial x} 
+  + 
+  y \frac{\partial f}{\partial y}
+  =
+  n f(x, y)
+$$
+```
+
+The case of $n = 1$ is the most important for economics.
+
+```{corollary}
+Let $(x, y) \mapsto f(x, y)$ be a homogeneous function of degree $1$.
+It holds that 
+$$
+  x \frac{\partial f}{\partial x} 
+  + 
+  y \frac{\partial f}{\partial y}
+  =
+  f(x, y)
+$$
+```
+
+
+# Constant returns to scale and zero profit
+
+Let $(K, L, A) \mapsto F(K, AL)$ be a production function. 
+It is usually assumed that $F$ has constant returns to scale; i.e., it is 
+homogeneous of degree $1$ (linearly homogeneous). For $\lambda > 0$, it holds that 
+
+$$
+  F(\lambda K, \lambda AL) = \lambda F(K, AL).
+$$
+
+When all factors of input ($K$ and $AL$) are increased by a common factor, 
+the output is increased by the same factor.
+
+Note that from the chain rule,
+
+$$
+  \frac{\partial F}{\partial L} 
+  = 
+  \frac{\partial F}{\partial (AL)} \frac{d (AL)}{d L}
+  =
+  \frac{\partial F}{\partial (AL)} A.
+$$
+
+
+By Euler's theorem, we have 
+
+$$
+  F(K, AL) 
+  = \frac{\partial F}{\partial K} K + \frac{\partial F}{\partial (AL)} AL
+  = \frac{\partial F}{\partial K} K + \frac{\partial F}{\partial L} L.
+$$
+
+The first order conditions for the firm's profit maximization give us 
+
+$$
+\begin{aligned}
+  \frac{\partial F}{\partial K} &= r + \delta \\
+  \frac{\partial F}{\partial L} &= w,
+\end{aligned}
+$$
+where $r + \delta$ is the gross rental rate and $w$ is the wage rate.
+
+Recall that the cost for production is $(r+\delta) K + wL$. That is, the linear homogeneity and 
+factor market competition equate output and cost:
+
+$$
+  F(K, AL) = (r + \delta) K + w L.  
+$$
+
+
